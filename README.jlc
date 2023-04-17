@@ -1,0 +1,13 @@
+sudo gpg --no-default-keyring --keyring /usr/share/keyrings/deadsnakes.gpg --keyserver keyserver.ubuntu.com --recv-keys F23C5A6CF475977595C89F51BA6932366A755776
+echo "deb [signed-by=/usr/share/keyrings/deadsnakes.gpg] https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/python.list
+sudo apt install python3.8
+sudo apt install python3.8-venv
+sudo apt install python3.8-dbg
+sudo apt install python3.8-dev
+sudo apt install python3.8-distutils
+sudo apt install python3-pip
+sudo apt install python3.8-lib2to3
+sudo apt install python3.8-gdbm
+sudo apt install python3.8-tk
+sudo apt install python3.8-full
+
