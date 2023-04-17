@@ -30,7 +30,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['178.170.13.219', 'cjlux.fr', 'www.cjlux.fr']
+ALLOWED_HOSTS = ['178.170.13.219', 'cjlux.fr', 'www.cjlux.fr', '127.0.0.1']
 
 
 # Application definition
