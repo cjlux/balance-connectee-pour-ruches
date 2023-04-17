@@ -30,7 +30,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cjlux.fr']
+ALLOWED_HOSTS = ['178.170.13.219', 'cjlux.fr', 'www.cjlux.fr']
 
 
 # Application definition
@@ -121,12 +121,12 @@ DATE_INPUT_FORMATS = ('%d/%m/%Y','%Y-%m-%d')
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-os.path.join(BASE_DIR, "static"),
+os.path.join(BASE_DIR, "balruche/static"),
 ]
 
 if os.environ.get('ENV') == 'PRODUCTION':
 
-    STATIC_ROOT = os.path.join(BASE_ROOT, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
