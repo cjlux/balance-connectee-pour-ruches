@@ -22,5 +22,5 @@ from balruche import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', views.hello, name='hello'),
-    re_path(r'^$', views.hello, name='hello'),
+    path('', views.hello, name='hello'),
 ]
