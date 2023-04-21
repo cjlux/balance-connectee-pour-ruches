@@ -3,4 +3,5 @@ __pycache__
 *.pyc
 staticfiles
 db.sqlite3
+balruche_project/db.sqlite3
 
