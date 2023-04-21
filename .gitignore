@@ -2,3 +2,5 @@ env-bal
 __pycache__
 *.pyc
 staticfiles
+db.sqlite3
+

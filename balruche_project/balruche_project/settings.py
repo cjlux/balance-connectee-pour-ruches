@@ -22,15 +22,20 @@ print(f"{BASE_DIR=}")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-z3ucdk+ac0tugse)j9=br67+!-(ietefu)*8i%r5e$bu_&b8%7'
-SECRET_KEY = os.environ.get('SECRET_KEY', '4i&u(!%shd*0-3$ls)fohsjsd48t(gu%1-ch_wyzk7@#n3bd8e')
+try:
+    SECRET_KEY = os.environ["SECRET_KEY"]
+except KeyError as e:
+    raise RuntimeError("Could not find a SECRET_KEY in environment") from e
+
+#SECRET_KEY = os.environ.get('SECRET_KEY', '4i&u(!%shd*0-3$ls)fohsjsd48t(gu%1-ch_wyzk7@#n3bd8e')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = True
+    DEBUG = False
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['178.170.13.219', 'cjlux.fr', 'www.cjlux.fr', '127.0.0.1']
+ALLOWED_HOSTS = ['178.170.13.219', '.cjlux.fr']
 
 
 # Application definition
@@ -42,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'balruche'
+    'balruche',
 ]
 
 MIDDLEWARE = [
@@ -120,17 +125,18 @@ DATE_INPUT_FORMATS = ('%d/%m/%Y','%Y-%m-%d')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 if os.environ.get('ENV') == 'PRODUCTION':
 
     STATIC_ROOT = BASE_DIR / 'staticfiles'
+    print(f"{STATIC_ROOT =}")
 
-    STATICFILES_DIR = ( 
-            BASE_DIR / 'balruche/static',
-    )
+    #STATICFILES_DIR = ( 
+    #        BASE_DIR / 'balruche/static',
+    #)
 
- # Simplified static file serving.
+    # Simplified static file serving.
     # https://warehouse.python.org/project/whitenoise/
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -139,4 +145,6 @@ if os.environ.get('ENV') == 'PRODUCTION':
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS=["https://cjlux.fr", "https://www.cjlux.fr"]
 
