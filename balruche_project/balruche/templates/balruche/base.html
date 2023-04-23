@@ -22,7 +22,7 @@
   </head>
   <body>
 
-    <div class="brand"><a href="/">Balance connectée pour ruches</a></div>
+    <div class="brand"><a href="/">Balance connectée</a></div>
     <div class="address-bar">Une application open source pour surveiller la masse de ruches</div>
 
     <!-- Navigation -->
@@ -37,15 +37,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <!-- <a class="navbar-brand" href="index.html">Balance connectée pour ruches</a> -->
-                Balance connectée pour ruches
+                <a class="navbar-brand" href="index.html">Balance connectée pour ruches</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        Tous nos comptes
-                    </li>
+                    <li>coming soon...</li>
+                    <li><a class="navbar-brand" href={% url 'logout'%}>Déconnexion</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -53,11 +51,10 @@
         <!-- /.container -->
     </nav>
 
-
     <div class="container">
       <div class="row">
         <div class="box">
-          {% block content %}{% endblock %}
+          {% block content %} hé hé {% endblock %}
         </div>
       </div>
     </div>

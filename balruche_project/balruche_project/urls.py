@@ -16,11 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
+from django.contrib.auth.views import LoginView, LogoutView
 
-from balruche import views
+from authentication.views import LoginPageView
+import balruche.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.hello, name='hello'),
-    path('', views.hello, name='hello'),
+    path('', LoginPageView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('home/', balruche.views.home, name='home'),
 ]
+

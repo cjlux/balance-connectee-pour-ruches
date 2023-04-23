@@ -20,22 +20,20 @@ print(f"{BASE_DIR=}")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-z3ucdk+ac0tugse)j9=br67+!-(ietefu)*8i%r5e$bu_&b8%7'
-try:
-    SECRET_KEY = os.environ["SECRET_KEY"]
-except KeyError as e:
-    raise RuntimeError("Could not find a SECRET_KEY in environment") from e
-
-#SECRET_KEY = os.environ.get('SECRET_KEY', '4i&u(!%shd*0-3$ls)fohsjsd48t(gu%1-ch_wyzk7@#n3bd8e')
-
+# SECRET_KEY = 'django-insecure-z3ucdk+ac0tugse)j9=br67+!-(ietefu)*8i%r5e$bu_&b8%7'
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
+    try:
+        SECRET_KEY = os.environ["SECRET_KEY"]
+    except KeyError as e:
+        raise RuntimeError("Could not find a SECRET_KEY in environment") from e
+
 else:
     DEBUG = True
+    SECRET_KEY = os.environ.get('SECRET_KEY', '4i&u(!%shd*0-3$ls)fohsjsd48t(gu%1-ch_wyzk7@#n3bd8e')
 
-ALLOWED_HOSTS = ['178.170.13.219', '.cjlux.fr']
+ALLOWED_HOSTS = ['178.170.13.219', '.cjlux.fr', '127.0.0.1']
 
 
 # Application definition
@@ -47,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+     'widget_tweaks',
+    'authentication',
     'balruche',
 ]
 
@@ -66,7 +66,9 @@ ROOT_URLCONF = 'balruche_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates',
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,8 +93,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-AUTH_USER_MODEL = 'balruche.CustomUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -127,14 +127,16 @@ DATE_INPUT_FORMATS = ('%d/%m/%Y','%Y-%m-%d')
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'balruche_project/static'),
+]
+
 if os.environ.get('ENV') == 'PRODUCTION':
 
     STATIC_ROOT = BASE_DIR / 'staticfiles'
     print(f"{STATIC_ROOT =}")
 
-    #STATICFILES_DIR = ( 
-    #        BASE_DIR / 'balruche/static',
-    #)
+    
 
     # Simplified static file serving.
     # https://warehouse.python.org/project/whitenoise/
@@ -146,5 +148,11 @@ if os.environ.get('ENV') == 'PRODUCTION':
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS=["https://cjlux.fr", "https://www.cjlux.fr"]
+AUTH_USER_MODEL = 'authentication.User'
+
+LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = 'home'
+
+#CSRF_TRUSTED_ORIGINS=["https://cjlux.fr", "https://www.cjlux.fr"]
 
