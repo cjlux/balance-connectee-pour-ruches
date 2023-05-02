@@ -15,14 +15,12 @@ body {
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
+h3 {
     text-transform: uppercase;
     font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
+    padding-left: 10px;
 }
 
 p {
@@ -163,7 +161,7 @@ footer p {
 
     .navbar-default {
         border: none;
-        background: #fff;
+        background: rgba(240, 235, 235, 0.397);
         background: rgba(255,255,255,0.6);
     }
 
