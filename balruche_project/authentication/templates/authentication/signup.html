@@ -1,0 +1,36 @@
+{% extends 'base2.html' %}
+{% block content %}
+    <h2>Inscription</h2>
+    {% if form.errors %}
+        {{ form.errors }}
+    {% endif %}
+    <style>
+        td {
+            font-weight: bold;
+            padding-top: 5px;
+            padding-left: 70px;
+            opacity: 1;
+          }
+     </style>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {% for field in form %}
+            <tr>
+                <td></td>
+                <td style="opacity: 1;">{{ field.label_tag }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="opacity: 1;">{{ field }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" >Créer le compte</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+{% endblock content %}

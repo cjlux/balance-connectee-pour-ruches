@@ -20,11 +20,13 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 from authentication.views import LoginPageView
 import balruche.views
+import authentication.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', LoginPageView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
+    path('logout/', authentication.views.logout_user, name='logout'),
     path('home/', balruche.views.home, name='home'),
+    path('signup/', authentication.views.signup_page, name='signup'),
 ]
 
