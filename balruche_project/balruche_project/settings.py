@@ -66,7 +66,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates',
+            os.path.join(BASE_DIR, 'templates'),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -128,6 +128,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIR = [
     os.path.join(BASE_DIR, 'balruche_project/static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 if os.environ.get('ENV') == 'PRODUCTION':
