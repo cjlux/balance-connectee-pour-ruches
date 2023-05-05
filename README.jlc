@@ -1,3 +1,5 @@
+## Installation de python3.8 sur ubuntu 22.04, pour faire un virtual env en python3.8:
+
 sudo gpg --no-default-keyring --keyring /usr/share/keyrings/deadsnakes.gpg --keyserver keyserver.ubuntu.com --recv-keys F23C5A6CF475977595C89F51BA6932366A755776
 echo "deb [signed-by=/usr/share/keyrings/deadsnakes.gpg] https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/python.list
 sudo apt install python3.8
@@ -11,3 +13,12 @@ sudo apt install python3.8-gdbm
 sudo apt install python3.8-tk
 sudo apt install python3.8-full
 
+# envoi de données:
+
+s = requests.Session()
+url = "http://127.0.0.1:8000/data/"
+s.get(url)
+<Response [200]>
+headers = { 'content-type':'application/x-www-form-urlencoded', 'X-CSRFToken': s.cookies["csrftoken"],}
+data = 'humid=55&temp=23&masse_ruche1=1&masse_ruche2=2&masse_ruche3=3&masse_ruche4=4&IMEI=864735053265720'
+r = s.post(url, data=data, headers=headers)
