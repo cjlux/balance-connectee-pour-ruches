@@ -154,5 +154,5 @@ LOGIN_URL = 'login'
 
 LOGIN_REDIRECT_URL = 'home'
 
-CSRF_TRUSTED_ORIGINS=["https://cjlux.fr", "https://www.cjlux.fr"]
+CSRF_TRUSTED_ORIGINS=["https://cjlux.fr", "https://www.cjlux.fr", "https://178.170.13.219"]
 
