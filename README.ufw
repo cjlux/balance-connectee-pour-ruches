@@ -1,0 +1,7 @@
+sudo ufw allow 'Apache Full'
+sudo apache2ctl configtest 
+
+sudo ufw default allow outgoing
+sudo ufw default deny incoming
+sudo ufw allow ssh
+

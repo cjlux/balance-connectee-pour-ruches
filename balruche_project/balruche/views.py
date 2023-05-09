@@ -4,15 +4,19 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from . import forms
 from balruche.models import BalRucheData, MasterBox
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required
 def home(request):
     return render(request, 'balruche/home.html')
 
+@csrf_exempt
 def receive_data(request):
     
     if request.method == 'POST':
         print(request.POST)
+        print("request.body:\n",request.body)
+        print("request.headers:\n",request.headers)
         form = forms.ReceiveDataForm(request.POST)
         if form.is_valid():
             br_data = BalRucheData()
