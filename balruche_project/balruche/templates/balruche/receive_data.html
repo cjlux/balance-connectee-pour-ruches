@@ -2,7 +2,13 @@
 {% block content %}
 <form action="" method="post" novalidate>
     {% csrf_token %} 
-    {{ form }}
+    <table>
+        {% for field in form %}
+        <tr>
+            <td>{{ field }}</td>
+        </tr>
+        {% endfor %}
+    </table>
     <input type="submit" value="Envoyer">
 </form>
 {% endblock %}
