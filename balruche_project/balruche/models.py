@@ -85,7 +85,11 @@ class BalRucheData(models.Model):
     return mess
     
   def __str__(self):
-    mess = f"{self.timestamp.strftime('%Y-%m-%d %H:%M:%S')} from {self.masterbox.IMEI}"
+    mess = f"{self.timestamp.strftime('%Y-%m-%d %H:%M:%S')} from "
+    if hasattr(self,'masterbox'):
+      mess += f"MasterBoX_IMEI={self.masterbox.IMEI}\n"
+    else:
+      mess += f"MasterBoX_UNKNOWN\n"
     return mess
  
  

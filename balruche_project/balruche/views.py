@@ -18,7 +18,6 @@ def receive_data(request):
         print("request.body:\n",request.body)
         print("request.headers:\n",request.headers)
         form = forms.ReceiveDataForm(request.POST)
-        print(form)
         if form.is_valid():
             br_data = BalRucheData()
             br_data.timestamp = datetime.now()
@@ -37,6 +36,7 @@ def receive_data(request):
             else:
                 br_data.masterbox = query[0]
                 br_data.save()
+            print(br_data.info());
             return redirect(settings.LOGIN_REDIRECT_URL)
         else:
             print('invalid form')
