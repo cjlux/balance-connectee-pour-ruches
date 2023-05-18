@@ -18,17 +18,18 @@ def receive_data(request):
         print("request.body:\n",request.body)
         print("request.headers:\n",request.headers)
         form = forms.ReceiveDataForm(request.POST)
+        print(form)
         if form.is_valid():
             br_data = BalRucheData()
-            br_data.timestamp    = datetime.now()
-            br_data.week_num     = br_data.timestamp.isocalendar().week
-            br_data.day_num      = br_data.timestamp.timetuple().tm_yday
-            br_data.humid        = form.cleaned_data['humid']
-            br_data.temp         = form.cleaned_data['temp']
-            br_data.masse_ruche1 = form.cleaned_data['masse_ruche1']
-            br_data.masse_ruche2 = form.cleaned_data['masse_ruche2']
-            br_data.masse_ruche3 = form.cleaned_data['masse_ruche3']
-            br_data.masse_ruche4 = form.cleaned_data['masse_ruche4']
+            br_data.timestamp = datetime.now()
+            br_data.w_num = br_data.timestamp.isocalendar().week
+            br_data.d_num = br_data.timestamp.timetuple().tm_yday
+            br_data.humid = form.cleaned_data['humid']
+            br_data.temp  = form.cleaned_data['temp']
+            br_data.m1 = form.cleaned_data['m1']
+            br_data.m2 = form.cleaned_data['m2']
+            br_data.m3 = form.cleaned_data['m3']
+            br_data.m4 = form.cleaned_data['m4']
             IMEI  = form.cleaned_data['IMEI']
             query = MasterBox.objects.filter(IMEI=IMEI)
             if query.count() == 0:
