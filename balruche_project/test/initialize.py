@@ -17,7 +17,7 @@ b.save()
 b=Balance(serial='b_0004')
 b.save()
 
-mb1=MasterBox(IMEI='864735053265720')
+mb1=MasterBox(IMEI='8933150023010302507')
 mb1.save()
 mb1.bal_1=Balance.objects.all()[0]
 mb1.bal_2=Balance.objects.all()[1]
